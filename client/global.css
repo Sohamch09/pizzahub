@@ -1,0 +1,136 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /**
+   * Tailwind CSS theme
+   * tailwind.config.ts expects the following color variables to be expressed as HSL values.
+   * A different format will require also updating the theme in tailwind.config.ts.
+  */
+  :root {
+    --background: 35 20% 98%;
+    --foreground: 25 15% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 25 15% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 25 15% 15%;
+
+    --primary: 15 90% 55%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 35 25% 92%;
+    --secondary-foreground: 25 15% 15%;
+
+    --muted: 35 15% 95%;
+    --muted-foreground: 25 10% 45%;
+
+    --accent: 25 80% 60%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 35 20% 88%;
+    --input: 35 20% 88%;
+    --ring: 15 90% 55%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 35 25% 96%;
+    --sidebar-foreground: 25 15% 25%;
+    --sidebar-primary: 15 90% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 35 20% 90%;
+    --sidebar-accent-foreground: 25 15% 15%;
+    --sidebar-border: 35 20% 85%;
+    --sidebar-ring: 15 90% 55%;
+
+    /* Pizza Brand Colors */
+    --pizza-50: 25 100% 97%;
+    --pizza-100: 25 100% 94%;
+    --pizza-200: 25 100% 87%;
+    --pizza-300: 25 100% 78%;
+    --pizza-400: 25 100% 66%;
+    --pizza-500: 15 90% 55%;
+    --pizza-600: 12 85% 48%;
+    --pizza-700: 10 80% 40%;
+    --pizza-800: 8 75% 32%;
+    --pizza-900: 6 70% 24%;
+
+    --cheese: 45 100% 85%;
+    --cheese-foreground: 25 15% 15%;
+
+    --tomato: 0 85% 65%;
+    --tomato-foreground: 0 0% 100%;
+  }
+
+  .dark {
+    --background: 25 15% 8%;
+    --foreground: 35 20% 95%;
+
+    --card: 25 15% 10%;
+    --card-foreground: 35 20% 95%;
+
+    --popover: 25 15% 10%;
+    --popover-foreground: 35 20% 95%;
+
+    --primary: 15 90% 55%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 25 10% 18%;
+    --secondary-foreground: 35 20% 95%;
+
+    --muted: 25 10% 18%;
+    --muted-foreground: 35 15% 65%;
+
+    --accent: 25 80% 60%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 75% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 25 10% 20%;
+    --input: 25 10% 20%;
+    --ring: 15 90% 55%;
+
+    --sidebar-background: 25 15% 10%;
+    --sidebar-foreground: 35 20% 90%;
+    --sidebar-primary: 15 90% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 25 10% 18%;
+    --sidebar-accent-foreground: 35 20% 95%;
+    --sidebar-border: 25 10% 20%;
+    --sidebar-ring: 15 90% 55%;
+
+    /* Pizza Brand Colors Dark Mode */
+    --pizza-50: 25 30% 15%;
+    --pizza-100: 25 40% 20%;
+    --pizza-200: 25 50% 25%;
+    --pizza-300: 25 60% 35%;
+    --pizza-400: 25 70% 45%;
+    --pizza-500: 15 90% 55%;
+    --pizza-600: 12 85% 60%;
+    --pizza-700: 10 80% 65%;
+    --pizza-800: 8 75% 75%;
+    --pizza-900: 6 70% 85%;
+
+    --cheese: 45 80% 70%;
+    --cheese-foreground: 25 15% 15%;
+
+    --tomato: 0 85% 65%;
+    --tomato-foreground: 0 0% 100%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}

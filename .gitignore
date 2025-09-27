@@ -30,4 +30,8 @@ dist-ssr
 .netlify
 
 # Builder folder
-.builder/rules
+.builder/
+
+# Builder rules
+.builder/rules/
+

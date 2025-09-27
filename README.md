@@ -141,7 +141,7 @@ PizzaHub/
 - `DELETE /api/inventory/items/:itemId` - Delete item (admin)
 
 ### Payment
-- `POST /api/payment/create-order` - Create Razorpay order
+- `POST /api/payment/create-order` - Create Razorpay order (🚧THIS FEATURE IS DOWN RIGHT NOW, ONLY COD IS AVALIABLE)
 - `POST /api/payment/verify` - Verify payment
 
 ## 🎨 UI Components
@@ -154,66 +154,9 @@ The application uses a comprehensive set of UI components built with Radix UI an
 - **Feedback** - Toast, Alert, Progress, etc.
 - **Data Display** - Table, Badge, Avatar, etc.
 
-## 🔧 Configuration
-
-### Environment Variables
-Create a `.env` file in the root directory:
-
-```env
-# Optional: Add any environment variables here
-PING_MESSAGE=Hello from PizzaHub!
-```
-
-### Netlify Configuration
-The `netlify.toml` file contains:
-- Build settings
-- Function configuration
-- Redirect rules
-- External dependencies
-
-## 🚀 Deployment
-
-### Automatic Deployment
-The application is set up for automatic deployment via Netlify:
-
-1. Push changes to the `main` branch
-2. Netlify automatically builds and deploys
-3. Functions are deployed as serverless functions
-
-### Manual Deployment
-```bash
 # Build the project
-npm run build:client
 
-# Deploy to Netlify (if using CLI)
-netlify deploy --prod --dir=dist/spa
 ```
 
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## 📝 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 👨‍💻 Author
-
-**Your Name**
-- GitHub: [@yourusername](https://github.com/yourusername)
-- Email: your.email@example.com
-
-## 🙏 Acknowledgments
-
-- [Radix UI](https://www.radix-ui.com/) for accessible components
-- [Tailwind CSS](https://tailwindcss.com/) for styling
-- [Vite](https://vitejs.dev/) for build tooling
-- [Netlify](https://netlify.com/) for hosting and functions
-
----
 
 **🍕 Enjoy your delicious pizza experience with PizzaHub!**

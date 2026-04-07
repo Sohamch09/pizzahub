@@ -207,7 +207,7 @@ export default function AdminDashboard() {
   const averageOrderValue = totalOrders > 0 ? totalRevenue / totalOrders : 0;
 
   return (
-    <div className="min-h-screen bg-background py-8">
+    <div className="min-h-screen py-8">
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="mb-8">

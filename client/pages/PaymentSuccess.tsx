@@ -72,7 +72,7 @@ export default function PaymentSuccess() {
         {/* Success Header */}
         <Card className="shadow-xl border-0 mb-8">
           <CardHeader className="text-center pb-2">
-            <div className="mx-auto bg-green-100 p-4 rounded-full w-fit mb-4">
+            <div className="mx-auto bg-green-100 p-4 rounded-full w-fit mb-4 animate-bounce">
               <CheckCircle className="h-12 w-12 text-green-600" />
             </div>
             <CardTitle className="text-3xl font-bold text-green-800">
@@ -110,7 +110,7 @@ export default function PaymentSuccess() {
                     <span className="font-medium">{item.name}</span>
                     <span className="text-muted-foreground ml-2">x{item.quantity}</span>
                   </div>
-                  <span className="font-semibold">₹{(item.price * item.quantity).toFixed(2)}</span>
+                  <span className="font-semibold">${(item.price * item.quantity).toFixed(2)}</span>
                 </div>
               ))}
               
@@ -118,7 +118,7 @@ export default function PaymentSuccess() {
               
               <div className="flex justify-between items-center pt-2">
                 <span className="font-bold text-lg">Total</span>
-                <span className="font-bold text-lg text-pizza-600">₹{orderDetails.total.toFixed(2)}</span>
+                <span className="font-bold text-lg text-pizza-600">${orderDetails.total.toFixed(2)}</span>
               </div>
               
               <div className="flex justify-between items-center text-sm text-muted-foreground">

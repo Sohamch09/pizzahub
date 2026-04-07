@@ -130,7 +130,7 @@ export default function Home() {
       </section>
 
       {/* Featured Pizzas */}
-      <section className="py-20 bg-background">
+      <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center space-y-4 mb-16">
             <Badge variant="outline" className="border-pizza-600 text-pizza-600">

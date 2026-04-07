@@ -5,7 +5,7 @@ import { Flame, Star, ChefHat, Clock, MapPin, Mail, Pizza } from "lucide-react";
 
 export default function About() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen">
       {/* Hero */}
       <section className="relative overflow-hidden py-16 md:py-24">
         <div className="absolute inset-0 -z-10 bg-gradient-to-br from-pizza-900/40 via-pizza-700/30 to-orange-700/20" />

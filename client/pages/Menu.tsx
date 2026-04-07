@@ -1,9 +1,17 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Star } from "lucide-react";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import RazorpayCheckout from "@/components/payment/RazorpayCheckout";
 
 export default function Menu() {
+  const navigate = useNavigate();
+  const [selectedPizza, setSelectedPizza] = useState<any>(null);
+  const [showCheckout, setShowCheckout] = useState(false);
+
   const pizzas = [
     {
       id: 1,
@@ -61,8 +69,35 @@ export default function Menu() {
     },
   ];
 
+  const handleAddToCart = (pizza: any) => {
+    setSelectedPizza(pizza);
+    setShowCheckout(true);
+  };
+
+  const handlePaymentSuccess = (paymentData: any) => {
+    setShowCheckout(false);
+    const params = new URLSearchParams({
+      orderId: paymentData.orderId || 'ORD-' + Date.now(),
+      paymentId: paymentData.paymentId || '',
+      method: paymentData.method || 'cash'
+    });
+    try { localStorage.setItem('last_order_id', String(paymentData.orderId || '')); } catch {}
+    window.dispatchEvent(new Event('orders:change'));
+    navigate(`/payment-success?${params.toString()}`);
+  };
+
+  const handlePaymentError = (error: any) => {
+    console.error("Payment error:", error);
+    setShowCheckout(false);
+    try {
+      // @ts-ignore
+      const { toast } = require("@/hooks/use-toast");
+      toast({ title: "Payment failed", description: "Please check details and try again", variant: "destructive" });
+    } catch {}
+  };
+
   return (
-    <div className="min-h-screen bg-background py-12">
+    <div className="min-h-screen py-12">
       <div className="container mx-auto px-4">
         <div className="text-center space-y-4 mb-10">
           <h1 className="text-4xl font-bold">Our Menu</h1>
@@ -71,7 +106,7 @@ export default function Menu() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {pizzas.map((pizza) => (
-            <Card key={pizza.id} className="group hover:shadow-lg transition-shadow overflow-hidden">
+            <Card key={pizza.id} className="group hover:shadow-lg transition-shadow overflow-hidden flex flex-col">
               <div className="relative">
                 <img
                   src={pizza.image}
@@ -90,18 +125,45 @@ export default function Menu() {
                   </div>
                 </div>
               </div>
-              <CardContent className="p-6 space-y-3">
+              <CardContent className="p-6 space-y-3 flex flex-col flex-grow">
                 <h3 className="text-xl font-semibold">{pizza.name}</h3>
-                <p className="text-muted-foreground">{pizza.description}</p>
-                <div className="flex items-center justify-between pt-2">
+                <p className="text-muted-foreground flex-grow">{pizza.description}</p>
+                <div className="flex items-center justify-between pt-4 mt-auto">
                   <span className="text-2xl font-bold text-pizza-500">${pizza.price}</span>
-                  <Button size="sm">Add to Cart</Button>
+                  <Button size="sm" onClick={() => handleAddToCart(pizza)}>Add to Cart</Button>
                 </div>
               </CardContent>
             </Card>
           ))}
         </div>
+
+        <Dialog open={showCheckout} onOpenChange={setShowCheckout}>
+          <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+            <DialogHeader>
+              <DialogTitle>Complete Your Order</DialogTitle>
+              <DialogDescription>
+                Review your order details and complete the payment to place your order.
+              </DialogDescription>
+            </DialogHeader>
+
+            {selectedPizza && (
+              <RazorpayCheckout
+                amount={selectedPizza.price}
+                orderItems={[
+                  {
+                    name: selectedPizza.name,
+                    quantity: 1,
+                    price: selectedPizza.price
+                  }
+                ]}
+                onPaymentSuccess={handlePaymentSuccess}
+                onPaymentError={handlePaymentError}
+              />
+            )}
+          </DialogContent>
+        </Dialog>
       </div>
     </div>
   );
 }
+

@@ -138,13 +138,13 @@ export default function RazorpayCheckout({
             {orderItems.map((item, index) => (
               <div key={index} className="flex justify-between">
                 <span>{item.name} x{item.quantity}</span>
-                <span>₹{(item.price * item.quantity).toFixed(2)}</span>
+                <span>${(item.price * item.quantity).toFixed(2)}</span>
               </div>
             ))}
             <Separator />
             <div className="flex justify-between font-bold text-lg">
               <span>Total</span>
-              <span>₹{amount.toFixed(2)}</span>
+              <span>${amount.toFixed(2)}</span>
             </div>
           </div>
         </CardContent>
@@ -179,7 +179,7 @@ export default function RazorpayCheckout({
                 id="phone"
                 value={deliveryInfo.phone}
                 onChange={(e) => setDeliveryInfo(prev => ({ ...prev, phone: e.target.value }))}
-                placeholder="+91 98765 43210"
+                placeholder="(555) 987-6543"
               />
             </div>
           </div>

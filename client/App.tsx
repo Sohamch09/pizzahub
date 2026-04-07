@@ -21,12 +21,14 @@ import Contact from "@/pages/Contact";
 // Layout
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import { InteractiveBg } from "@/components/ui/interactive-bg";
 
 function App() {
   return (
     <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} forcedTheme="dark">
       <BrowserRouter>
-        <div className="min-h-screen bg-background flex flex-col">
+        <InteractiveBg />
+        <div className="min-h-screen bg-transparent flex flex-col relative z-0">
           <Header />
           <main className="flex-1">
             <Routes>
